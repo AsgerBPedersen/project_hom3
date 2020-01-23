@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { transports } from "./Map";
+
 
 class Inputfield extends Component {
     createFields() {
@@ -23,6 +25,16 @@ class Inputfield extends Component {
         return (
             <div className="col-5 col-lg-2" id="form">
               {this.createFields()}   
+              <div  className="form-group">
+              <label htmlFor="Transport">transport</label>
+              <select value={this.props.transportSelect} className="form-control" onChange={this.props.selectOnChange}>
+                        {
+                            transports.map(obj => {
+                            return <option key={obj.label} value={obj.value}>{obj.label}</option>
+                            })
+                        }
+                    </select>
+              </div>
               <button type="button" className="btn btn-primary" onClick={this.props.onClick}>Søg</button>
               <style jsx>{`
              #form { 
